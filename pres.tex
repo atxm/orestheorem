@@ -1,0 +1,96 @@
+\documentclass[pdf]{beamer}
+\mode<presentation>{}
+
+\newcommand{\G}{\textcolor{blue}{G}}
+\newcommand{\n}{\textcolor{red}{n}}
+\newcommand{\V}{\textcolor{teal}{V}}
+\newcommand{\E}{\textcolor{olive}{E}}
+\newcommand{\T}{\textcolor{magenta}{T}}
+
+\usepackage{color,tikz}
+\usefonttheme{serif}
+
+%% preamble
+\title{Ore's Theorem}
+\subtitle{CS 111 Presentation}
+\author{Youssef Adam \and Thomas Kang \\ Youssef Koreatam \and Michael Wong \and Gabriel Serrano}
+\date{March 19, 2024}
+\institute{Department of Computer Science, University of California, Riverside}
+\begin{document}
+
+    %% title frame
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    %% questions
+    \begin{frame}{Questions}
+
+    \end{frame}
+
+    %% introduction frame
+    \begin{frame}{Introduction: Background Knowledge}
+        To understand \textbf{Ore's theorem}, we must briefly recapitulate
+        what it means for a graph to be \textbf{Hamiltonian}.
+        \pause
+        \vspace{10px}
+        \\Let $\G(\V,\E)$ be an undirected graph with $|\V| \geq 3$ vertices. \pause
+        \\If we are able to create a cycle $\T$ that meets each and every
+        vertex strictly once, then $\G$ is considered \textbf{Hamiltonian}.
+        \pause
+        \vspace{20px}
+        \\\textcolor{orange}{\underline{Example:}}
+        \vspace{10px}
+        \\\begin{tikzpicture}[main/.style = {color=blue, draw, circle},
+            every path/.style = {color=magenta}]
+            \node[main] (1) {$a$};
+            \node[main] (2) [above right of=1] {$b$};
+            \node[main] (3) [below right of=1] {$c$};
+            \node[main] (4) [above right of=3] {$d$};
+            \node[main] (5) [above right of=4] {$e$};
+            \node[main] (6) [below right of=4] {$f$};
+            \draw (1) -- (2); \draw (1) -- (3); \draw (2) -- (4);
+            \draw (3) -- (4); \draw (4) -- (5); \draw (5) -- (6); \draw (4) -- (6);
+        \end{tikzpicture}
+    \end{frame}
+    %% Declare Ore's theorem formally in this slide.
+    %% During the video presentation, we will break it down into informal parts
+    %% so as to make presenting easier (and longer--remember we have to talk for
+    %% at least 7 minutes!)
+    \begin{frame}{Introduction: Ore's Theorem Statement}
+
+    \end{frame}
+
+    %% Create an example of Ore's theorem and go through it.
+    \begin{frame}{Examples}
+
+    \end{frame}
+
+    %% Create a second examples of Ore's theorem.
+    \begin{frame}{Examples}
+
+    \end{frame}
+
+    %% (OPTIONAL) Create a third example of Ore's theorem.
+    \begin{frame}{Examples}
+
+    \end{frame}
+
+    %% Describe the applications of graph theory and relate that to Hamiltonian
+    %% paths and the importance of efficiency in finding them. This can be as
+    %% many slides as you want.
+    \begin{frame}{Applications}
+
+    \end{frame}
+
+    %% Summarize everything this presentation has covered, from the statement of Ore's Theorem to its Applications.
+    \begin{frame}{Conclusion: Summary}
+
+    \end{frame}
+
+    %% Restate the questions.
+    \begin{frame}{Conclusion: Questions}
+
+    \end{frame}
+
+\end{document}
