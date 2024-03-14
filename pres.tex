@@ -23,7 +23,9 @@
 \newcommand{\jump}{\hspace{10px}}
 \definecolor{gold}{rgb}{0.85,0.65,0.13}
 
-\usepackage{cancel,slashed,xcolor,color,tikz}
+\setbeamertemplate{itemize items}[circle]
+
+\usepackage{mathtools,cancel,slashed,xcolor,color,tikz}
 \usefonttheme{serif}
 
 %% preamble
@@ -136,28 +138,28 @@
             \end{tikzpicture}
 
             \pause
-            $|\V| = 6 \geq 3 \jump \vdash \jump \orefirstcond$
+            $\n \coloneq |\V| = 6 \geq 3 \jump \vdash \jump \orefirstcond$
 
             \pause
 
             \vspace{5px}
-            {\footnotesize $\gdeg(\bluea) + \gdeg(\bluee) = 6$
+            {\footnotesize $\gdeg(\bluea) + \gdeg(\bluee) = 6 \pause \geq \n$
             
             \pause
 
-            $\gdeg(\bluea) + \gdeg(\bluef) = 6$
+            $\gdeg(\bluea) + \gdeg(\bluef) = 6 \pause \geq \n$
 
             \pause
 
-            $\gdeg(\blueb) + \gdeg(\bluec) = 6$
+            $\gdeg(\blueb) + \gdeg(\bluec) = 6 \pause \geq \n$
             
             \pause
 
-            $\gdeg(\blueb) + \gdeg(\bluef) = 6$
+            $\gdeg(\blueb) + \gdeg(\bluef) = 6 \pause \geq \n$
             
             \pause
 
-            $\gdeg(\bluec) + \gdeg(\bluee) = 6$}
+            $\gdeg(\bluec) + \gdeg(\bluee) = 6 \pause \geq \n$}
 
             \pause
 
@@ -198,24 +200,20 @@
             \end{tikzpicture}
 
             \pause
-            $|\V| = 5 \geq 3 \jump \vdash \jump \orefirstcond$
+            $\n \coloneq |\V| = 5 \geq 3 \jump \vdash \jump \orefirstcond$
 
             \pause
 
             \vspace{5px}
-            {\footnotesize $\gdeg(\bluea) + \gdeg(\bluec) = 4$
+            {\footnotesize $\gdeg(\bluea) + \gdeg(\bluec) = 4 \pause \ngeq \n$
             
             \pause
 
-            $\gdeg(\bluea) + \gdeg(\bluee) = 4$
+            $\gdeg(\bluea) + \gdeg(\bluee) = 4 \ngeq \n$
 
-            \pause
+            $\gdeg(\blueb) + \gdeg(\blued) = 6 \geq \n$
 
-            $\gdeg(\blueb) + \gdeg(\blued) = 6$
-            
-            \pause
-
-            $\gdeg(\bluec) + \gdeg(\bluee) = 4$}
+            $\gdeg(\bluec) + \gdeg(\bluee) = 4 \ngeq \n$}
 
             \pause
 
@@ -264,28 +262,25 @@
             \end{tikzpicture}
 
             \pause
-            $|\V| = 7 \geq 3 \jump \vdash \jump \orefirstcond$
+            $\n \coloneq |\V| = 7 \geq 3 \jump \vdash \jump \orefirstcond$
 
             \pause
 
             \vspace{5px}
-            {\footnotesize $\gdeg(\bluea) + \gdeg(\blued) = 6$ \qquad
-            $\gdeg(\bluea) + \gdeg(\bluee) = 8$ \qquad
-            $\gdeg(\bluea) + \gdeg(\bluef) = 8$
+            {\scriptsize $\gdeg(\bluea) + \gdeg(\blued) = 6 \ngeq \n$ \quad
+            $\gdeg(\bluea) + \gdeg(\bluee) = 8 \geq \n$ \quad
+            $\gdeg(\bluea) + \gdeg(\bluef) = 8 \geq \n$
 
             \pause
 
-            $\gdeg(\bluea) + \gdeg(\blueg) = 4$ \qquad
-            $\gdeg(\blueb) + \gdeg(\bluef) = 8$ \qquad
-            $\gdeg(\blueb) + \gdeg(\blueg) = 8$
+            $\gdeg(\bluea) + \gdeg(\blueg) = 4 \ngeq \n $ \quad
+            $\gdeg(\blueb) + \gdeg(\bluef) = 8 \geq \n $ \quad
+            $\gdeg(\blueb) + \gdeg(\blueg) = 8 \geq \n$
             
-            \pause
 
-            $\gdeg(\bluec) + \gdeg(\bluee) = 8$ \qquad
-            $\gdeg(\bluec) + \gdeg(\blueg) = 8$ \qquad
-            $\gdeg(\blued) + \gdeg(\blueg) = 6$}
-
-            \pause
+            $\gdeg(\bluec) + \gdeg(\bluee) = 8 \geq \n$ \quad
+            $\gdeg(\bluec) + \gdeg(\blueg) = 8 \geq \n$ \quad
+            $\gdeg(\blued) + \gdeg(\blueg) = 6 \ngeq \n$}
 
             $\cancel\vdash \text{ } \oresecondcond$
 
@@ -302,41 +297,53 @@
   %% Describe the applications of graph theory and relate that to Hamiltonian
     %% paths and the importance of efficiency in finding them. This can be as
     %% many slides as you want.
-    \begin{frame}{Applications}
 
-%start applications code
+    \begin{frame}{Applications}
    
-    \textbf{Hamiltonian Paths is crucial in the real world}\\
-   \begin{align*}
-    &\textcolor{blue}{Network}\text{ }\textcolor{blue}{Routing: }\\
-    &\\
-    &\text{- Finding the fastest path from A to B}\\
-    &\\
-    &\text{- Improve network traffic and delays from client to server. }\\
-    &\\
-    &\text{- improvement of network runtime. }\\
-    &\\
-    &\textcolor{green}{ Ex:} \text{ when typing elearnhome.ucr.edu(canvas site), your computer}\\
-    &\text{internet immediately determines the fastest path to reach the cite }
-   \end{align*}
+        \textbf{Hamiltonian cycles} have a variety of real-world applications.
+
+        \vspace{10px}
+
+        \textcolor{blue}{Network routing:}
+        \begin{itemize}
+            \item finding the most effective and efficient round-trip path between points A to B
+            \item improving network traffic by reducing delays from client to server
+            \item optimizing network runtime
+        \end{itemize}
+
+        \vspace{20px}
+
+        Picture a data packet moving through a network of routers to reach a server, aiming to find a path that visits each router exactly once, and thereby optimizing data transmission efficiency.
+
     \end{frame}
 
     \begin{frame}{Applications}
-        \begin{align*}
-            &\textcolor{blue}{Navigation}\text{ } \textcolor{blue}{Systems:}\\
-            &\\
-            &\text{Navigation is another example of Hamiltonian paths}\\
-            &\\
-            &\text{ -Finding a path that travelers can take to reduce traveling time}\\
-            &\\
-            &\text{ -Navigation technology uses algorithms that prevents travelers from }\\
-            &\text{ revisiting destinations and redundant paths}\\
-            &\\
-            &\textcolor{green}{For }\text{ }\textcolor{green}{example: }\text{ Traffic in the US 60W freeway to Los Angeles }\\
-            &\text{ is congested}\\
-            \\ % for this example while in the video, I will explain more in detail. Essentially is the idea of how a certain case, navigation technology re computes and performs a new hamiltonian path that is efficient for the driver/traveler to avoid traffic and travel time
-            &\\
-        \end{align*}
+        \textbf{Hamiltonian cycles} have a variety of real-world applications.
+
+        \vspace{10px}
+
+        \textcolor{blue}{Navigation systems:}
+        \begin{itemize}
+            \item finding a path that travelers can take to both reach every destination and reduce estimated time of arrival
+            \item development of algorithms to prevent travelers from revisiting destinations and inefficient paths
+        \end{itemize}
+        
+        \vspace{20px}
+
+        In some navigation systems, the primary goal is to find an efficient \emph{round-trip} cycle that visits each destination once, ensuring smooth transport without revisiting locations.
+
+        % for this example while in the video, I will explain more in detail.
+        % Essentially is the idea of how a certain case, navigation technology
+        % re computes and performs a new hamiltonian path that is efficient for
+        % the driver/traveler to avoid traffic and travel time
+        % - Gabriel Serrano
+
+        % That is fine. I edited this section as an example is better spoken as
+        % opposed to put in the slide. Extra space was used to provide more abstract
+        % examples. If you'd like the example you gave so you can give yourself somewhat
+        % of a script, here it is: "Traffic in the US 60W freeway to Los Angeles"
+        % - Youssef Adam
+
     \end{frame}
 
     %% Summarize everything this presentation has covered, from the statement of Ore's Theorem to its Applications.
