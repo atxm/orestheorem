@@ -25,7 +25,7 @@
 
 \setbeamertemplate{itemize items}[circle]
 
-\usepackage{mathtools,cancel,slashed,xcolor,color,tikz}
+\usepackage{multicol,mathtools,cancel,slashed,xcolor,color,tikz}
 \usefonttheme{serif}
 
 %% preamble
@@ -42,8 +42,14 @@
     \end{frame}
 
     %% questions
-    \begin{frame}{Questions}
-
+    \begin{frame}{Introduction: Questions}
+        Below are three questions that you may be able to answer by the end of this presentation.
+        \vspace{10px}
+        \begin{itemize}
+            \item What are the two criteria a graph must meet in order to satisfy Ore's theorem and therefore be a Hamiltonian graph?
+            \item If a graph $\G$ does not meet both criteria to satisfy Ore's theorem, is $\G$ Hamiltonian?
+            \item What is one example of a real-world application of Hamiltonian cycles, and how does this tie in with Ore's theorem?
+        \end{itemize}
     \end{frame}
 
     %% introduction frame
@@ -105,7 +111,24 @@
     %% so as to make presenting easier (and longer--remember we have to talk for
     %% at least 7 minutes!)
     \begin{frame}{Introduction: Ore's Theorem Statement}
-
+        \pause
+        Let:
+        \vspace{10px}
+        \begin{itemize}
+            \item $\G(\V,\E)$ be a complete undirected graph,
+            \pause
+            \item $\ore$ be a condition (Ore's theorem) with two subconditions such that:
+            \pause
+                \begin{itemize}
+                    \item \normalsize $\orefirstcond$: $|\V| \geq 3$,
+                    \pause
+                    \vspace{2px}
+                    \item $\oresecondcond$: the sum of the degrees of all nonadjacent pairs $\geq |\V|$.
+                \end{itemize}
+        \end{itemize}
+        \vspace{10px}
+        \pause
+        If $\G$ satisfies $\ore$, then we may conclude that $\G$ is a Hamiltonian graph (i.e., $\G$ has a Hamiltonian cycle $\T$).
     \end{frame}
 
     %% Create an example of Ore's theorem and go through it.
@@ -175,6 +198,65 @@
         \end{figure}
     \end{frame}
 
+    % This slide is a repeat of the last one but only because it displays the Hamiltonian cycle with arrows.
+    \begin{frame}{Example I}
+        \begin{figure}
+            \emph{First Case}
+            
+            \small $\Gone(\V,\E)$ \textbf{satisfies} Ore's theorem $\ore$ and \textbf{has} a Hamiltonian cycle $\T$.
+
+            \vspace{5px}
+            \begin{tikzpicture}[auto,node distance=1.1cm,scale=1, main/.style = {minimum size=0.7cm, color=teal, draw, circle}]
+                \node[main] (1) {$\bluea$};
+                \node[main] (2) [below left of=1] {$\blueb$};
+                \node[main] (3) [below right of=1] {$\bluec$};
+                \node[main] (4) [below of=1] {$\blued$};
+                \node[main] (5) [below of=2] {$\bluee$};
+                \node[main] (6) [below of=3] {$\bluef$};
+                \path[every node/.style={font=\sffamily\small},{color=olive}]
+                    (1) edge node [right] {} (2)
+                    (1) edge node [right] {} (3)
+                    (1) edge node [right] {} (4)
+                    (2) edge node [right] {} (4)
+                    (3) edge node [right] {} (4)
+                    (2) edge node [right] {} (5)
+                    (3) edge node [right] {} (6)
+                    (4) edge node [right] {} (5)
+                    (4) edge node [right] {} (6)
+                    (5) edge node [right] {} (6);
+                \path[->,every node/.style={font=\sffamily\small},{color=orange}]
+                    (4) edge[bend left] node [left] {} (1)
+                    (1) edge[bend right] node [left] {} (2)
+                    (2) edge[bend right] node [left] {} (5)
+                    (5) edge[bend right] node [left] {} (6)
+                    (6) edge[bend right] node [left] {} (3)
+                    (3) edge[bend right] node [left] {} (4);
+            \end{tikzpicture}
+
+            $\n \coloneq |\V| = 6 \geq 3 \jump \vdash \jump \orefirstcond$
+
+
+            \vspace{5px}
+            {\footnotesize $\gdeg(\bluea) + \gdeg(\bluee) = 6 \geq \n$
+
+            $\gdeg(\bluea) + \gdeg(\bluef) = 6 \geq \n$
+
+            $\gdeg(\blueb) + \gdeg(\bluec) = 6 \geq \n$
+
+            $\gdeg(\blueb) + \gdeg(\bluef) = 6 \geq \n$
+
+            $\gdeg(\bluec) + \gdeg(\bluee) = 6 \geq \n$}
+
+            $\vdash \oresecondcond$
+
+            \vspace{5px}
+
+            This graph \textbf{satisfies} $\ore$ and \textbf{has}
+            
+            a Hamiltonian cycle $\T = \textcolor{orange}{\{d,a,b,e,f,c,d\}}.$
+        \end{figure}
+    \end{frame}
+
     %% Create a second example of Ore's theorem.
     \begin{frame}{Example II}
         \begin{figure}
@@ -183,14 +265,13 @@
             \small $\Gtwo(\V,\E)$ \textbf{does not satisfy} $\ore$ and \textbf{does not have} a Hamiltonian cycle $\T$.
 
             \vspace{5px}
-            \begin{tikzpicture}[auto,node distance=1.1cm,scale=1, main/.style = {minimum size=0.7cm, color=teal, draw, circle},
-                every path/.style = {color=olive}]
+            \begin{tikzpicture}[auto,node distance=1.1cm,scale=1, main/.style = {minimum size=0.7cm, color=teal, draw, circle}]
                 \node[main] (1) {$\bluea$};
                 \node[main] (2) [below left of=1] {$\blueb$};
                 \node[main] (3) [below of=1] {$\bluec$};
                 \node[main] (4) [below right of=1] {$\blued$};
                 \node[main] (5) [below of=3] {$\bluee$};
-                \path[every node/.style={font=\sffamily\small}]
+                \path[every node/.style={font=\sffamily\small},{color=olive}]
                     (1) edge node [right] {} (2)
                     (1) edge node [right] {} (4)
                     (2) edge node [right] {} (3)
@@ -229,7 +310,7 @@
         \end{figure}
     \end{frame}
 
-    %% (OPTIONAL) Create a third example of Ore's theorem.
+    %% Create a third example of Ore's theorem.
     \begin{frame}{Example III}
         \begin{figure}
             \emph{Third Case}
@@ -294,6 +375,71 @@
         \end{figure}
     \end{frame}
 
+    % This slide is a repeat of the last one but only because it displays the Hamiltonian cycle with arrows.
+    \begin{frame}{Example III}
+        \begin{figure}
+            \emph{Third Case}
+            
+            \small $\Gthree(\V,\E)$ \textbf{does not satisfy} $\ore$ and \textbf{has} a Hamiltonian cycle $\T$.
+
+            \vspace{5px}
+            \begin{tikzpicture}[auto,node distance=1cm,scale=1, main/.style = {minimum size=0.7cm, color=teal, draw, circle}]
+                \node[main] (1) {$\bluea$};
+                \node[main] (2) [below left of=1] {$\blueb$};
+                \node[main] (3) [below right of=1] {$\bluec$};
+                \node[main] (4) [below right of=2] {$\blued$};
+                \node[main] (5) [below left of=4] {$\bluee$};
+                \node[main] (6) [below right of=4] {$\bluef$};
+                \node[main] (7) [below right of=5] {$\blueg$};
+                \path[every node/.style={font=\sffamily\small},{color=olive}]
+                    (1) edge node [right] {} (2)
+                    (1) edge node [right] {} (3)
+                    (2) edge node [right] {} (3)
+                    (2) edge node [right] {} (4)
+                    (2) edge node [right] {} (5)
+                    (3) edge node [right] {} (4)
+                    (3) edge node [right] {} (6)
+                    (4) edge node [right] {} (5)
+                    (4) edge node [right] {} (6)
+                    (5) edge node [right] {} (6)
+                    (5) edge node [right] {} (7)
+                    (6) edge node [right] {} (7);
+                \path[->,every node/.style={font=\sffamily\small},{color=orange}]
+                    (1) edge[bend right] node [left] {} (2)
+                    (2) edge[bend right] node [left] {} (4)
+                    (4) edge[bend right] node [left] {} (5)
+                    (5) edge[bend right] node [left] {} (7)
+                    (7) edge[bend right] node [left] {} (6)
+                    (6) edge[bend right] node [left] {} (3)
+                    (3) edge[bend right] node [left] {} (1);
+            \end{tikzpicture}
+
+            $\n \coloneq |\V| = 7 \geq 3 \jump \vdash \jump \orefirstcond$
+
+            \vspace{5px}
+            {\scriptsize $\gdeg(\bluea) + \gdeg(\blued) = 6 \ngeq \n$ \quad
+            $\gdeg(\bluea) + \gdeg(\bluee) = 8 \geq \n$ \quad
+            $\gdeg(\bluea) + \gdeg(\bluef) = 8 \geq \n$
+
+            $\gdeg(\bluea) + \gdeg(\blueg) = 4 \ngeq \n $ \quad
+            $\gdeg(\blueb) + \gdeg(\bluef) = 8 \geq \n $ \quad
+            $\gdeg(\blueb) + \gdeg(\blueg) = 8 \geq \n$
+            
+
+            $\gdeg(\bluec) + \gdeg(\bluee) = 8 \geq \n$ \quad
+            $\gdeg(\bluec) + \gdeg(\blueg) = 8 \geq \n$ \quad
+            $\gdeg(\blued) + \gdeg(\blueg) = 6 \ngeq \n$}
+
+            $\cancel\vdash \text{ } \oresecondcond$
+
+            \vspace{5px}
+
+            This graph \textbf{does not satisfy} $\ore$ but still \textbf{has}
+            
+            a Hamiltonian cycle $\T = \textcolor{orange}{\{a,b,d,e,g,f,c,a\}}$.
+        \end{figure}
+    \end{frame}
+
   %% Describe the applications of graph theory and relate that to Hamiltonian
     %% paths and the importance of efficiency in finding them. This can be as
     %% many slides as you want.
@@ -348,12 +494,39 @@
 
     %% Summarize everything this presentation has covered, from the statement of Ore's Theorem to its Applications.
     \begin{frame}{Conclusion: Summary}
+        Ore's theorem has many practical, mathematical applications.
+        
+        This theorem can be applied to anything that deals with systems that can be represented
+        by vertices and graph, such as:
+        \begin{multicols}{2}
+            \begin{itemize}
+            \item transportation systems
+            \item neural networks
+            \item sewage pipes
+            \end{itemize}
+            
+            \columnbreak
 
+            \begin{itemize}
+            \item electrical lines
+            \item social networks
+            \end{itemize}
+            \end{multicols}
+            Any individual can apply this theorem to solve problems
+            involving such matters. Ore's theorem is a revolutionary theorem that has
+            enabled humanity to progress expeditiously in the field of mathematics and
+            technological innovations.
     \end{frame}
 
     %% Restate the questions.
     \begin{frame}{Conclusion: Questions}
-
+        Below are the questions displayed at the beginning of the presentation.
+        \vspace{10px}
+        \begin{itemize}
+            \item What are the two criteria a graph must meet in order to satisfy Ore's theorem and therefore be a Hamiltonian graph?
+            \item If a graph $\G$ does not meet both criteria to satisfy Ore's theorem, is $\G$ Hamiltonian?
+            \item What is one example of a real-world application of Hamiltonian cycles, and how does this tie in with Ore's theorem?
+        \end{itemize}
     \end{frame}
 
 \end{document}
