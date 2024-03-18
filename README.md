@@ -12,6 +12,7 @@ This presentation was developed using the $\LaTeX$ document class `beamer`.
 - What are the two criteria a graph must meet in order to satisfy Ore’s theorem and therefore be a Hamiltonian graph?
 - If a graph $\textcolor{blue}{G}$ does not meet both criteria to satisfy Ore’s theorem, is $\textcolor{blue}{G}$ Hamiltonian?
 - What is one example of a real-world application of Hamiltonian cycles, and how does this tie in with Ore’s theorem?
+
 He then brings up the background knowledge required to understand Ore's theorem—mainly basic graph theory and traversal concepts, providing an example of a Hamiltonian graph.
 
 [Koreatam](https://github.com/YoussefKoreatam "Koreatam's GitHub profile") concludes the introductory section by explaining the primary concept of the presentation and providing a formal definition of Ore's theorem, defining it for the remainder of the presentation as $\textcolor{gold}{\Omega}$ and separating it into its two criteria $\textcolor{gold}{\Omega_1}$ and $\textcolor{gold}{\Omega_2}$ (pronounced *Omega-one* and *Omega-two*).
